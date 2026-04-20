@@ -69,16 +69,14 @@ router.delete('/:id', auth, async (req, res) => {
 
 router.get('/all', auth, async (req, res) => {
   try {
-    const myJobs = await Job.find({ postedBy: req.user.userId })
-    const jobIds = myJobs.map(job => job._id)
-    
-    const applications = await Application.find({ job: { $in: jobIds } })
-      .populate('job', 'title company location')
-      .populate('applicant', 'name email')
-    
+    const applications = await Application.find()
+      .populate('applicant', 'name email resume') // ✅ IMPORTANT
+      .populate('job', 'title')
+
     res.json(applications)
   } catch (error) {
-    res.status(500).json({ message: 'Something went wrong' })
+    console.log(error)
+    res.status(500).json({ message: 'Server error' })
   }
 })
 
