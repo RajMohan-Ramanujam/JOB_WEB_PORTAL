@@ -3,6 +3,7 @@ import API from '../api/axios'
 
 function Applicants() {
   const [applications, setApplications] = useState([])
+  const backendUrl = 'https://job-web-portal-ysqb.onrender.com'
 
   useEffect(() => {
     API.get('/apply/all')
@@ -37,12 +38,26 @@ function Applicants() {
             <h2 className="text-xl font-bold text-gray-800">
               {app.applicant ? app.applicant.name : 'Unknown'}
             </h2>
+
             <p className="text-gray-500">
               {app.applicant ? app.applicant.email : ''}
             </p>
+
+            {app.applicant && app.applicant.resume && (
+              <a
+                href={`${backendUrl}/${app.applicant.resume}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block mt-2 text-blue-600 hover:underline text-sm"
+              >
+                View Resume
+              </a>
+            )}
+
             <p className="text-gray-600 mt-2">
               Job: {app.job ? app.job.title : 'Unknown'}
             </p>
+
             <span className={`inline-block mt-3 px-4 py-1 rounded-full text-sm font-bold ${
               app.status === 'accepted' ? 'bg-green-100 text-green-700' :
               app.status === 'rejected' ? 'bg-red-100 text-red-700' :

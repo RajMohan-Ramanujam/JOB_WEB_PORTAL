@@ -1,19 +1,19 @@
 const express = require('express')
-const mongoose = require('mongoose')   
+const mongoose = require('mongoose')
 const cors = require('cors')
+const path = require('path')
 require('dotenv').config()
 
-
-
-
-
-
 const app = express()
-app.use(cors({
-  origin: '*'
-}))
+
+// Middleware
+app.use(cors({ origin: '*' }))
 app.use(express.json())
 
+// ✅ Serve uploads folder
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+
+// Routes
 const practiceRoutes = require('./routes/practice')
 app.use('/api/practice', practiceRoutes)
 
@@ -32,10 +32,12 @@ app.use('/api/users', userRoutes)
 const dashboardRoutes = require('./routes/dashboard')
 app.use('/api/dashboard', dashboardRoutes)
 
-app.get('/',(req,res) => {
-    res.json({message: ' sever is running!'})
+// Test route
+app.get('/', (req, res) => {
+  res.json({ message: 'server is running!' })
 })
 
+// DB + Server
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('Connected to MongoDB')
