@@ -12,6 +12,7 @@ import MyApplications from "./pages/MyApplications";
 import Applicants from "./pages/Applicants";
 import Dashboard from "./pages/Dashboard";
 import MyJobs from "./pages/MyJobs";
+import ChatBox from "./components/ChatBox";
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
         />
       </Routes>
       <Footer />
+      <ChatBox/>
     </BrowserRouter>
   );
 }
