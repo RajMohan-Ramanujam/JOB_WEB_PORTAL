@@ -32,7 +32,7 @@ app.use('/api/users', userRoutes)
 const dashboardRoutes = require('./routes/dashboard')
 app.use('/api/dashboard', dashboardRoutes)
 
-const chatRoutes = require('./routes/Chat')
+const chatRoutes = require('./routes/chat')
 app.use('/api/chat', chatRoutes)
 
 // Test route
