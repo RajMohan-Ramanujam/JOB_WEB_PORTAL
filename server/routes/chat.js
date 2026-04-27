@@ -8,6 +8,8 @@ const groq = new Groq({
 })
 
 router.post('/', auth, async (req, res) => {
+  console.log("BODY:", req.body) // ✅ DEBUG LINE
+
   try {
     const { message } = req.body
 
@@ -29,7 +31,7 @@ Keep answers short and helpful.`
           content: message
         }
       ],
-      model: 'llama3-70b-8192', // ✅ FIXED MODEL
+      model: 'llama3-70b-8192',
     })
 
     const reply = response.choices[0]?.message?.content || "No response"
@@ -41,7 +43,7 @@ Keep answers short and helpful.`
 
     res.status(500).json({ 
       message: 'AI service error',
-      error: error.message // optional for debugging
+      error: error.message
     })
   }
 })
