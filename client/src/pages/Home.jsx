@@ -27,7 +27,11 @@ function Home() {
             <div className="bg-white p-6 rounded-lg shadow hover:shadow-md">
               <div className="text-3xl mb-3">1</div>
               <h3 className="font-bold mb-2">Create Account</h3>
-              <p className="text-gray-500 text-sm">Register as job seeker or recruiter</p>
+              <p className="text-gray-500 text-sm">Register as job seeker or recruiter
+
+hfhtfdhgiljoilhgjh;oljkjghgilj;ilhjhgvchjhj
+                .
+              </p>
             </div>
           </Link>
           <Link to="/jobs">

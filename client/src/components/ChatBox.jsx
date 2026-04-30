@@ -35,7 +35,7 @@ function ChatBox() {
   if (!token) return null
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div style={{position:'fixed', bottom:'24px', right:'24px', zIndex:9999}}>
 
       {/* Chat Window */}
       {open && (
